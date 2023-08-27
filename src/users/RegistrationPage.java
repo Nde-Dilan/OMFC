@@ -3,20 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package users;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+
+import java.sql.*;
+
+
 /**
- * @author Computer solutions
+ * @author NDE HURICH DILAN
  */
 public class RegistrationPage extends javax.swing.JFrame {
-     Connection connection=null ;
+    Connection connection=null ;
     PreparedStatement statement =null;
     ResultSet result = null;
     /**
@@ -27,6 +24,7 @@ public class RegistrationPage extends javax.swing.JFrame {
         initComponents();
         connection = DbConnection.DbConnection();
     }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -217,23 +215,6 @@ public class RegistrationPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {  
-         try {
-             String sql = "INSERT INTO Customer VALUES (?,?);";
-             String username="" ;
-             String password="" ;
-             statement.setString(1, username);
-             statement.setString(2, password);
-             statement.executeQuery();
-             System.out.println("Registration successful!");
-              LoginPage login = new LoginPage();
-              this.dispose();
-              login.setVisible(true);
-         } catch (SQLException ex) {
-             System.err.println("ERROR");
-            // Logger.getLogger(RegistrationPage.class.getName()).log(Level.SEVERE, null, ex);
-         }
-     }
     private void goToLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToLoginActionPerformed
         // TODO add your handling code here:
                 LoginPage login = new LoginPage();
@@ -253,6 +234,7 @@ public class RegistrationPage extends javax.swing.JFrame {
              String user_name=username.getText() ;
              String password=password1.getText() ;
              String password_1=password2.getText() ;
+             
              if(!password.equals(password_1) || user_name.equals("") || password.equals("") ){
                  JOptionPane.showMessageDialog(null, "You should enter the same password for both fields and fill all the required fields!");
              }else{
@@ -268,6 +250,7 @@ public class RegistrationPage extends javax.swing.JFrame {
          } catch (SQLException ex) {
              System.err.println("ERROR "+ex);
             // Logger.getLogger(RegistrationPage.class.getName()).log(Level.SEVERE, null, ex);
+            //jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/users/trolley (4).png 4.png")));
          }
     }//GEN-LAST:event_registerActionPerformed
 
